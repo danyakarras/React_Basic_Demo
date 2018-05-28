@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import AppStore from './stores/AppStore.js';
 import Counter from './components/Counter.jsx';
+import Picture from './components/Picture.jsx';
 
 class App extends Component {
 
@@ -10,6 +11,7 @@ class App extends Component {
     super();
     this.state = {
       counter: AppStore.getCounterNum(),
+      showPicture: AppStore.getShowPicture()
     }
     this._onChange = this._onChange.bind(this);
   }
@@ -24,9 +26,9 @@ class App extends Component {
 
   _onChange() {
     this.setState({
-      counter: AppStore.getCounterNum()
+      counter: AppStore.getCounterNum(),
+      showPicture: AppStore.getShowPicture()
     });
-    //console.log(this.state);
   }
 
   render() {
@@ -40,6 +42,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
           <Counter counterNum={this.state.counter}/>
+          <Picture showPicture={this.state.showPicture}/>
       </div>
     );
   }

@@ -37,8 +37,9 @@ export default _appStore;
 _appStore.dispatchToken = AppDispatcher.register( action => {
 	switch ( action.actionType ) {
 
-		case 'setShowPicture':
-			_showPicture = action.showPicture;
+		case 'toggleShowPicture':
+			_showPicture = !_showPicture;
+			_appStore.emitChange();
 			break;
 
 		case 'setCounter':
@@ -48,7 +49,6 @@ _appStore.dispatchToken = AppDispatcher.register( action => {
 
 		default:
 			break;
-
 	}
 
 	return true;
